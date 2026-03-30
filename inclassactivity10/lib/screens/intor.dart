@@ -7,6 +7,7 @@ class Intor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFFF9C4), // pale yellow
       appBar: AppBar(
         title: const Text('Stages'),
         centerTitle: true,
