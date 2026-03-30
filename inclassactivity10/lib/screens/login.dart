@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:confetti/confetti.dart';
+import 'finish.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -49,13 +50,22 @@ class _SignupPageState extends State<SignupPage> {
           backgroundColor: Colors.green,
         ),
       );
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SuccessScreen(
+            userName: _nameController.text,
+          ),
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF2DEDE),, // pale red
+      backgroundColor: const Color(0xFFF2DEDE),
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
