@@ -15,6 +15,7 @@ class _SignupPageState extends State<SignupPage> {
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _birthdayController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordController2 = TextEditingController();
 
@@ -32,6 +33,7 @@ class _SignupPageState extends State<SignupPage> {
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
+    _birthdayController.dispose();
     _passwordController.dispose();
     _passwordController2.dispose();
     _confettiController.dispose();
@@ -170,6 +172,70 @@ class _SignupPageState extends State<SignupPage> {
                           !value.contains('.edu')) {
                         return 'Please enter an email with a tag like .org';
                       }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+
+                  TextFormField(
+                    controller: _birthdayController,
+                    style: const TextStyle(color: Colors.black),
+                    decoration: const InputDecoration(
+                      labelText: 'Birthday (MM/DD/YYYY)',
+                      labelStyle: TextStyle(color: Colors.black),
+                      prefixIcon: Icon(Icons.cake, color: Colors.black),
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your birthday';
+                      }
+
+                      final regex = RegExp(r'^\d{2}/\d{2}/\d{4}$');
+                      if (!regex.hasMatch(value)) {
+                        return 'Use MM/DD/YYYY';
+                      }
+
+                      final parts = value.split('/');
+                      final month = int.tryParse(parts[0]);
+                      final day = int.tryParse(parts[1]);
+                      final year = int.tryParse(parts[2]);
+
+                      if (month == null || day == null || year == null) {
+                        return 'Enter a valid birthday';
+                      }
+
+                      if (month < 1 || month > 12) {
+                        return 'Month must be between 1 and 12';
+                      }
+
+                      if (year < 1900) {
+                        return 'Enter a valid year';
+                      }
+
+                      final daysInMonth = DateTime(year, month + 1, 0).day;
+                      if (day < 1 || day > daysInMonth) {
+                        return 'That is not a real date';
+                      }
+
+                      final birthday = DateTime(year, month, day);
+                      final today = DateTime.now();
+                      final normalizedToday = DateTime(
+                        today.year,
+                        today.month,
+                        today.day,
+                      );
+
+                      if (birthday.isAfter(normalizedToday)) {
+                        return 'Birthday cannot be in the future';
+                      }
+
                       return null;
                     },
                   ),
