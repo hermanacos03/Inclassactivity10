@@ -46,6 +46,7 @@ class _SignupPageState extends State<SignupPage> {
         SnackBar(
           content: Text(
             'Welcome! Punk, I mean ${_nameController.text} created successfully.',
+            style: const TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.green,
         ),
@@ -70,9 +71,14 @@ class _SignupPageState extends State<SignupPage> {
         centerTitle: true,
         title: const Text(
           'WASSUP BROTHA!!!',
-          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
         ),
         backgroundColor: const Color.fromARGB(255, 39, 176, 149),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Stack(
         alignment: Alignment.topCenter,
@@ -113,10 +119,18 @@ class _SignupPageState extends State<SignupPage> {
 
                   TextFormField(
                     controller: _nameController,
+                    style: const TextStyle(color: Colors.black),
                     decoration: const InputDecoration(
                       labelText: 'Full Name',
-                      prefixIcon: Icon(Icons.person),
+                      labelStyle: TextStyle(color: Colors.black),
+                      prefixIcon: Icon(Icons.person, color: Colors.black),
                       border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -129,10 +143,18 @@ class _SignupPageState extends State<SignupPage> {
 
                   TextFormField(
                     controller: _emailController,
+                    style: const TextStyle(color: Colors.black),
                     decoration: const InputDecoration(
                       labelText: 'Email Address',
-                      prefixIcon: Icon(Icons.email),
+                      labelStyle: TextStyle(color: Colors.black),
+                      prefixIcon: Icon(Icons.email, color: Colors.black),
                       border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -156,10 +178,18 @@ class _SignupPageState extends State<SignupPage> {
                   TextFormField(
                     controller: _passwordController,
                     obscureText: true,
+                    style: const TextStyle(color: Colors.black),
                     decoration: const InputDecoration(
                       labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock),
+                      labelStyle: TextStyle(color: Colors.black),
+                      prefixIcon: Icon(Icons.lock, color: Colors.black),
                       border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -176,10 +206,18 @@ class _SignupPageState extends State<SignupPage> {
                   TextFormField(
                     controller: _passwordController2,
                     obscureText: true,
+                    style: const TextStyle(color: Colors.black),
                     decoration: const InputDecoration(
                       labelText: 'Password confirmation',
-                      prefixIcon: Icon(Icons.lock),
+                      labelStyle: TextStyle(color: Colors.black),
+                      prefixIcon: Icon(Icons.lock, color: Colors.black),
                       border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -197,6 +235,7 @@ class _SignupPageState extends State<SignupPage> {
                     onPressed: _submitForm,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
+                      foregroundColor: Colors.black,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 40,
                         vertical: 12,
@@ -204,7 +243,7 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     child: const Text(
                       'Sign Up',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                   ),
                 ],
